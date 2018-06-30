@@ -21,7 +21,7 @@
 ### Association
 - has_many:users, through: members
 - has_many:members
-- has_many:mesages
+- has_many:messages
 
 ## messages table
 |Column|Type|Option|
@@ -38,8 +38,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
+|user_id|reference|null: false, foreign_key: true|
+|group_id|reference|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :group
