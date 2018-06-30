@@ -26,20 +26,21 @@
 ## messages table
 |Column|Type|Option|
 |------|----|------|
-|user_id|integer|null:false|
-|group_id|integer|null:false|
+|user_id|reference|null:false, foreign_key:true|
+|group_id|reference|null:false, foreign_key:true|
 |body|text||
 |img|string||
 
 ### Association
-- belongs_to:members
+- belongs_to:user
+- belongs_to:group
 
 ## members table
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|reference|null: false, foreign_key: true|
-|group_id|reference|null: false, foreign_key: true|
+|user_id|reference|null:false, foreign_key:true|
+|group_id|reference|null:false, foreign_key:true|
 
 ### Association
 - belongs_to :group
