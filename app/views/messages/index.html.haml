@@ -1,0 +1,28 @@
+.wrapper
+  = render 'messages/shared/sidebar'
+  .main
+    .header.clearfix
+      .header-left
+        %p.header-left__name groupname
+        %p.header-left__user member:username
+      .header-right
+        .header-right__edit edit
+    .content
+      .message
+        %ul.user
+          %li.list.user__name username
+          %li.list.user__date ひにちひづけ
+        %p.text message
+      .message
+        %ul.user
+          %li.list.user__name username
+          %li.list.user__date ひにちひづけ
+        %p.text message
+    .form
+      %form
+        %input.form__message
+        .form__mask
+          %label.form__mask__image
+            = fa_icon 'picture-o', class: 'icon'
+            %input.hidden{type: 'file'}
+        %input.form__submit{type: 'submit', value: 'Send'}
