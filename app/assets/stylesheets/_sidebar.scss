@@ -32,11 +32,15 @@
       box-sizing: border-box;
       padding: 20px 0 40px;
       &__name{
+        margin-top: 20px;
         font-size: 15px;
+        color: $white;
       }
       &__message{
         font-size: 11px;
         margin-top: 5px;
+        color: $white;
+        margin-bottom: 40px;
       }
     }
   }
