@@ -29,6 +29,7 @@
   }
 }
 .content{
+  overflow: auto;
   height: calc(100vh - 20px - 170px);
   background-color: $main-background;
   box-sizing: border-box;
@@ -54,6 +55,9 @@
       font-size: 14px;
       color: $main-message-text;
       margin-bottom: 40px;
+    }
+    .lower-message__image{
+      width: 300px;
     }
   }
 }

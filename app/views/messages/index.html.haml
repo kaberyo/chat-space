@@ -11,7 +11,7 @@
     .header-right
       .header-right__edit edit
   .content
-    = render @messages
+    = render partial: 'message', collection: @messages
   .form
     = form_for [@group, @message] do |f|
       = f.text_field :body, class: 'form__message', placeholder: 'type a message'
