@@ -1,0 +1,15 @@
+.header.clearfix
+  .header-left
+    %p.header-left__name
+      = current_user.name
+    %p.header-left__user member:username
+  .header-right
+    .header-right__edit edit
+.content
+  .message
+    %ul.user
+      %li.list.user__name
+        = message.user.name
+      %li.list.user__date
+        = format_posted_time(message.created_at)
+    %p.text message
