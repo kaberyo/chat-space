@@ -1,28 +1,22 @@
+- @message = Message.new
 .wrapper
   = render 'messages/../shared/sidebar'
-  .main
-    .header.clearfix
-      .header-left
-        %p.header-left__name groupname
-        %p.header-left__user member:username
-      .header-right
-        .header-right__edit edit
-    .content
-      .message
-        %ul.user
-          %li.list.user__name username
-          %li.list.user__date ひにちひづけ
-        %p.text message
-      .message
-        %ul.user
-          %li.list.user__name username
-          %li.list.user__date ひにちひづけ
-        %p.text message
-    .form
-      %form
-        %input.form__message
-        .form__mask
-          %label.form__mask__image
-            = fa_icon 'picture-o', class: 'icon'
-            %input.hidden{type: 'file'}
-        %input.form__submit{type: 'submit', value: 'Send'}
+
+.main
+  .header.clearfix
+    .header-left
+      %p.header-left__name
+        = current_user.name
+      %p.header-left__user member:username
+    .header-right
+      .header-right__edit edit
+  .content
+    = render partial: 'message', collection: @messages
+  .form
+    = form_for [@group, @message] do |f|
+      = f.text_field :body, class: 'form__message', placeholder: 'type a message'
+      .form__mask
+        = f.label :img, class: 'form__mask__image' do
+          = fa_icon 'picture-o', class: 'icon'
+          = f.file_field :img, class: 'hidden'
+      = f.submit 'Send', class: 'form__submit'
