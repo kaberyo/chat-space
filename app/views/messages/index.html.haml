@@ -3,7 +3,15 @@
   = render 'messages/../shared/sidebar'
 
 .main
-  = render @messages
+  .header.clearfix
+    .header-left
+      %p.header-left__name
+        = current_user.name
+      %p.header-left__user member:username
+    .header-right
+      .header-right__edit edit
+  .content
+    = render @messages
   .form
     = form_for [@group, @message] do |f|
       = f.text_field :body, class: 'form__message', placeholder: 'type a message'
