@@ -62,6 +62,5 @@ gem 'font-awesome-rails'
 gem 'pry-rails'
 gem 'carrierwave'
 gem 'mini_magick'
-gem 'rspec-rails'
 
 gem 'devise'
