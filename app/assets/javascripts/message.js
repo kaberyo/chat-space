@@ -22,8 +22,8 @@ $(function(){
   $('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
-    console.log(this)
     var url = $(this).attr('action')
+    console.log(url)
     $.ajax({
       url: url,
       type: "POST",
@@ -35,10 +35,12 @@ $(function(){
     .done(function(data){
       var html = buildHTML(data);
       $('.content').append(html)
-      $('.textbox').val('')
+      $('.content').animate({
+      scrollTop: $('.content')[0].scrollHeight
+      },{duration:1000});
       $('#new_message')[0].reset();
       $('.form__submit').prop('disabled', false);
-      })
+    })
     .fail(function(){
       alert('送信できてないで');
       $('.form__submit').prop('disabled', false);
