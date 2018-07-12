@@ -1,6 +1,5 @@
 $(function(){
   function buildMessage(message){
-    var body = message.body ? `<div class="list">${message.body}</div>` : "";
     var img = message.img ? `<img class="lower-message__image" src="${message.img}">` : "";
     var html = `<div class="message">
                   <ul class="user">
@@ -12,14 +11,14 @@ $(function(){
                     </li>
                   </ul>
                   <p class="text">
-                    ${body}
+                    ${message.body}
                   </p>
                   ${img}
                 </div>`
     $('.content').append(html)
   }
   function scrollBottom(target){
-    target.animate({scrollTop: target[0].scrollHeight},{duration:1000});
+    $('.content').animate({scrollTop: $('.content')[0].scrollHeight}, {duration:1000});
   }
   $('#new_message').on('submit', function(e){
     e.preventDefault();
@@ -35,12 +34,12 @@ $(function(){
     })
     .done(function(data){
       buildMessage(data);
-      scrollBottom($('.content'))
+      scrollBottom();
       $('#new_message')[0].reset();
       $('.form__submit').prop('disabled', false);
     })
     .fail(function(){
-      alert('送信できてないで');
+      alert('メッセージを入力して下さい');
       $('.form__submit').prop('disabled', false);
     })
   })
