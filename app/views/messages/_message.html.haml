@@ -6,6 +6,5 @@
       = format_posted_time(message.created_at)
   %p.text
     - if message.body.present?
-      %p.lower-message__content
-        = message.body
+      = message.body
     = image_tag message.img.url, class: 'lower-message__image' if message.img.present?
