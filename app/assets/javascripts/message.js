@@ -1,8 +1,7 @@
 $(function(){
-  function buildHTML(message){
+  function appendMessage(message, messagelist){
     var body = message.body ? `<div class="list">${message.body}</div>` : "";
     var img = message.img ? `<img class="lower-message__image" src="${message.img}">` : "";
-
     var html = `<div class="message">
                   <ul class="user">
                     <li class="list user__name">
@@ -17,13 +16,16 @@ $(function(){
                   </p>
                   ${img}
                 </div>`
-    return html;
+    messagelist.append(html)
+    scrollBottom(messagelist);
+  }
+  function scrollBottom(target){
+    target.animate({scrollTop: target[0].scrollHeight},{duration:1000});
   }
   $('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
     var url = $(this).attr('action')
-    console.log(url)
     $.ajax({
       url: url,
       type: "POST",
@@ -33,11 +35,7 @@ $(function(){
       contentType: false
     })
     .done(function(data){
-      var html = buildHTML(data);
-      $('.content').append(html)
-      $('.content').animate({
-      scrollTop: $('.content')[0].scrollHeight
-      },{duration:1000});
+      appendMessage(data, $('.content'));
       $('#new_message')[0].reset();
       $('.form__submit').prop('disabled', false);
     })
