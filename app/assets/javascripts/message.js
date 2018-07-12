@@ -1,5 +1,5 @@
 $(function(){
-  function appendMessage(message, messagelist){
+  function buildMessage(message){
     var body = message.body ? `<div class="list">${message.body}</div>` : "";
     var img = message.img ? `<img class="lower-message__image" src="${message.img}">` : "";
     var html = `<div class="message">
@@ -16,8 +16,7 @@ $(function(){
                   </p>
                   ${img}
                 </div>`
-    messagelist.append(html)
-    scrollBottom(messagelist);
+    $('.content').append(html)
   }
   function scrollBottom(target){
     target.animate({scrollTop: target[0].scrollHeight},{duration:1000});
@@ -35,7 +34,8 @@ $(function(){
       contentType: false
     })
     .done(function(data){
-      appendMessage(data, $('.content'));
+      buildMessage(data);
+      scrollBottom($('.content'))
       $('#new_message')[0].reset();
       $('.form__submit').prop('disabled', false);
     })
