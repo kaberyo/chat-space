@@ -39,7 +39,7 @@ $(function(){
       $('.form__submit').prop('disabled', false);
     })
     .fail(function(){
-      alert('メッセージ');
+      alert('メッセージを入力して下さい');
       $('.form__submit').prop('disabled', false);
     })
   })
