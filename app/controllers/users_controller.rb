@@ -1,5 +1,14 @@
 class UsersController < ApplicationController
-  def edit
+
+  def index
+    @users = User.where('name LIKE(?)', "%#{params[:keyword]}%").limit(20)
+    # respond_toが動かない406エラーになるためrenderで変換してます
+    # render json: @users
+    respond_to do |format|
+      # binding.pry()
+      format.html
+      format.json
+    end
   end
 
   def update
@@ -10,16 +19,10 @@ class UsersController < ApplicationController
     end
   end
 
-  def search
-    @users = User.where('name LIKE(?)', "%#{params[:keyword]}%").limit(20)
-    respond_to do |format|
-      format.html
-      format.json
-    end
-  end
   private
 
   def user_params
     params.require(:user).permit(:name, :email)
   end
+
 end
