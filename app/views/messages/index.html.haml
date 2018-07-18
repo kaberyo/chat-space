@@ -6,10 +6,13 @@
   .header.clearfix
     .header-left
       %p.header-left__name
-        = current_user.name
-      %p.header-left__user member:username
+        = @group.name
+      %p.header-left__user
+        Member :
+        - @group.users.each do |user|
+          = user.name
     .header-right
-      .header-right__edit edit
+      = link_to "edit", "edit", class: "header-right__edit"
   .content
     = render partial: 'message', collection: @messages
   .form
