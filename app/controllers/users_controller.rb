@@ -1,11 +1,8 @@
 class UsersController < ApplicationController
 
   def index
-    @users = User.where('name LIKE(?)', "%#{params[:keyword]}%").limit(20)
-    # respond_toが動かない406エラーになるためrenderで変換してます
-    # render json: @users
+    @users = User.where('name LIKE(?)', "%#{params[:keyword]}%").where.not(id: "#{current_user.id}").limit(20)
     respond_to do |format|
-      # binding.pry()
       format.html
       format.json
     end
