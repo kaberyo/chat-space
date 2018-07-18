@@ -1,3 +1,16 @@
+@mixin fa() {
+ display: inline-block;
+ font: normal normal normal 14px/1 FontAwesome;
+ font-size: inherit;
+ text-rendering: auto;
+ -webkit-font-smoothing: antialiased;
+ -moz-osx-font-smoothing: grayscale;
+}
+
+a{
+  text-decoration: none;
+}
+
 $white: #ffffff;
 $side-header-background: #253141;
 $side-groups-background: #2f3e51;
@@ -7,3 +20,4 @@ $gray: #999999;
 $main-message-text: #434a54;
 $main-form-background: #aaaaaa;
 $alert_orange: #f35500;
+
