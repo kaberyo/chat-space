@@ -66,8 +66,9 @@ $(function(){
         .fail(function(data){
           alert('自動更新に失敗しました')
         });
-        }
-        else{
-        clearInterval(interval);
-      }} ,5000 );
+      }
+    else{
+      clearInterval(interval);
+    }
+  },5000 );
 });
