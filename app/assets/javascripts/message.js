@@ -58,7 +58,6 @@ $(function(){
           data.messages.forEach(function(message){
             if(message.id > id ){
               insertHTML += buildHTML(message);
-              // id = message.id
             }
           });
           $('.content').append(insertHTML);
@@ -70,5 +69,5 @@ $(function(){
     else{
       clearInterval(interval);
     }
-  },5000 );
+  },1000 );
 });
