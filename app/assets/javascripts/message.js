@@ -58,6 +58,7 @@ $(function(){
           data.messages.forEach(function(message){
             if(message.id > id ){
               insertHTML += buildHTML(message);
+              scrollBottom();
             }
           });
           $('.content').append(insertHTML);
