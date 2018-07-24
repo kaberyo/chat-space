@@ -2,24 +2,24 @@
 .wrapper
   = render 'messages/../shared/sidebar'
 
-.main
-  .header.clearfix
-    .header-left
-      %p.header-left__name
-        = @group.name
-      %p.header-left__user
-        Member :
-        - @group.users.each do |user|
-          = user.name
-    .header-right
-      = link_to "edit", edit_group_path(@group), class: "header-right__edit"
-  .content
-    = render partial: 'message', collection: @messages
-  .form
-    = form_for [@group, @message] do |f|
-      = f.text_field :body, class: 'form__message textbox', placeholder: 'type a message'
-      .form__mask
-        = f.label :img, class: 'form__mask__image' do
-          = fa_icon 'picture-o', class: 'icon'
-          = f.file_field :img, class: 'hidden'
-      = f.submit 'Send', class: 'form__submit'
+  .main
+    .header.clearfix
+      .header-left
+        %p.header-left__name
+          = @group.name
+        %p.header-left__user
+          Member :
+          - @group.users.each do |user|
+            = user.name
+      .header-right
+        = link_to "edit", edit_group_path(@group), class: "header-right__edit"
+    .content
+      = render partial: 'message', collection: @messages
+    .form
+      = form_for [@group, @message] do |f|
+        = f.text_field :body, class: 'form__message textbox', placeholder: 'type a message'
+        .form__mask
+          = f.label :img, class: 'form__mask__image' do
+            = fa_icon 'picture-o', class: 'icon'
+            = f.file_field :img, class: 'hidden'
+        = f.submit 'Send', class: 'form__submit'
